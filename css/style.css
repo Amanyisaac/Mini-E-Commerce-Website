@@ -587,6 +587,77 @@ margin-bottom: 10px;
     color: white;
      
  }
+
+/* SwiperJS Slider Styles */
+#hero-slider {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+}
+
+.hero-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-content {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 80px;
+    position: relative;
+}
+
+.slide-text {
+    color: white;
+    max-width: 600px;
+}
+
+.slide-text h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.slide-text p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white !important;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 20px !important;
+}
+
+.swiper-pagination-bullet {
+    background: rgba(255,255,255,0.5) !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: white !important;
+}
+
+.cart-count {
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
 #prodetails .single-pro-details input{
     width: 50px;
     height: 47px;
