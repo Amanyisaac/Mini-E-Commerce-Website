@@ -1,12 +1,9 @@
-/*const bar =  document.getElementById('bar');
+ const bar =  document.getElementById('bar');
 
 const close =  document.getElementById('close');
 
 const nav = document.getElementById('navbar');
-
-
-
-if(bar){
+ if(bar){
 
   bar.addEventListener('click',()=>{
 
@@ -15,10 +12,7 @@ if(bar){
   })
 
 }
-
-
-
-if(close){
+ if(close){
 
   close.addEventListener('click',()=>{
 
@@ -26,8 +20,26 @@ if(close){
 
   })
 
-}*/
+} 
 
+//productt
+ var MainImg = document.getElementById("MinImg");
+var smallimg = document.getElementsByClassName("small-img");
+smallimg[0].onclick =function(){
+    MinImg.src=smallimg[0].sec;
+}
+smallimg[1].onclick =function(){
+    MinImg.src=smallimg[1].sec;
+}
+smallimg[2].onclick =function(){
+    MinImg.src=smallimg[2].sec;
+}
+smallimg[3].onclick =function(){
+    MinImg.src=smallimg[3].sec;
+}
+smallimg[4].onclick =function(){
+    MinImg.src=smallimg[4].sec;
+}
 
 
 
