@@ -14,14 +14,14 @@ h1 {
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 50px;
     line-height: 40px;
     color: black;
 }
 
 h3 {
     font-size: 20px;
-    color: black;
+     color: black;
 }
 
 h6 {
@@ -214,8 +214,8 @@ body {
     background-color: #c6ebb1;
 }
 
-#feature .fe-box:nth-child(4) h2 {
-    background-color: #a99de0;
+#feature .fe-box:nth-child(4) h3 {
+    background-color: #7b61f1;
 }
 
 #feature .fe-box:nth-child(5) h2 {
@@ -225,6 +225,8 @@ body {
 #feature .fe-box:nth-child(6) h2 {
     background-color: #cdebbc;
 }
+
+ 
 
 #product1 {
     text-align: center;
