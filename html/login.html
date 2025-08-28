@@ -151,7 +151,7 @@
         const auth = new Auth();
 
          if (auth.isAuthenticated()) {
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         }
 
          document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -197,7 +197,7 @@
                     timer: 2000,
                     showConfirmButton: false
                 }).then(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '../index.html';
                 });
             } else {
                 Swal.fire({
