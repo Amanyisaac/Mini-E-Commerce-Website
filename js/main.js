@@ -1,5 +1,4 @@
- // Mobile Navigation
-const bar = document.getElementById('bar');
+ const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
 
@@ -15,8 +14,7 @@ if (close) {
     })
 }
 
-// Authentication System
-class Auth {
+ class Auth {
     constructor() {
         this.users = [
             { email: 'admin@adora.com', password: 'admin123', role: 'admin' },
@@ -59,11 +57,9 @@ class Auth {
     }
 }
 
-// Global auth instance
-const auth = new Auth();
+ const auth = new Auth();
 
-// Page Protection
-function checkAuthentication() {
+ function checkAuthentication() {
     const currentPage = window.location.pathname;
     
     if (!auth.isAuthenticated() && !currentPage.includes('login.html')) {
@@ -73,8 +69,7 @@ function checkAuthentication() {
     return true;
 }
 
-// Logout functionality
-function logout() {
+ function logout() {
     if (typeof Swal !== 'undefined') {
         Swal.fire({
             title: 'Are you sure?',
@@ -96,8 +91,7 @@ function logout() {
     }
 }
 
-// Product detail page functionality
-var MainImg = document.getElementById("MinImg");
+ var MainImg = document.getElementById("MinImg");
 var smallimg = document.getElementsByClassName("small-img");
 
 if (smallimg.length > 0) {
@@ -110,14 +104,11 @@ if (smallimg.length > 0) {
     }
 }
 
-// Page initialization
-document.addEventListener('DOMContentLoaded', function() {
-    // Skip authentication check for login page
-    if (!window.location.pathname.includes('login.html')) {
+ document.addEventListener('DOMContentLoaded', function() {
+     if (!window.location.pathname.includes('login.html')) {
         if (!checkAuthentication()) return;
         
-        // Update navbar for authenticated users
-        updateNavbar();
+         updateNavbar();
     }
 });
 
@@ -125,10 +116,8 @@ function updateNavbar() {
     if (auth.isAuthenticated()) {
         const navbar = document.getElementById('navbar');
         if (navbar) {
-            // Check if logout button doesn't already exist
-            if (!navbar.querySelector('.logout-btn')) {
-                // Add logout button
-                const logoutItem = document.createElement('li');
+             if (!navbar.querySelector('.logout-btn')) {
+                 const logoutItem = document.createElement('li');
                 logoutItem.innerHTML = '<a href="#" class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>';
                 navbar.appendChild(logoutItem);
             }

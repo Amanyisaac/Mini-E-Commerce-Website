@@ -1,5 +1,4 @@
-// Product Management System
-class ProductManager {
+ class ProductManager {
     constructor() {
         this.products = this.loadProducts();
     }
@@ -10,8 +9,7 @@ class ProductManager {
             return JSON.parse(savedProducts);
         }
 
-        // Default products based on current website
-        const defaultProducts = [
+         const defaultProducts = [
             {
                 id: 1,
                 name: "Short skirt",
@@ -154,13 +152,11 @@ class ProductManager {
             </div>
         `).join('');
 
-        // Add event listeners for cart and remove buttons
-        this.attachProductListeners();
+         this.attachProductListeners();
     }
 
     attachProductListeners() {
-        // Add to cart listeners
-        document.querySelectorAll('.add-to-cart').forEach(button => {
+         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 const productId = e.currentTarget.getAttribute('data-product-id');
@@ -170,8 +166,7 @@ class ProductManager {
             });
         });
 
-        // Remove product listeners
-        document.querySelectorAll('.remove-product').forEach(button => {
+         document.querySelectorAll('.remove-product').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const productId = e.currentTarget.getAttribute('data-product-id');
@@ -210,8 +205,7 @@ class ProductManager {
     }
 }
 
-// Cart Management System
-class CartManager {
+ class CartManager {
     constructor() {
         this.cart = this.loadCart();
     }
@@ -334,8 +328,7 @@ class CartManager {
             cartCount.textContent = this.getTotalItems();
         }
         
-        // Update cart badge in navbar
-        const cartBadge = document.querySelector('#lg-bag a');
+         const cartBadge = document.querySelector('#lg-bag a');
         if (cartBadge) {
             const currentContent = cartBadge.innerHTML;
             if (!currentContent.includes('cart-count')) {
@@ -415,8 +408,7 @@ class CartManager {
     }
 }
 
-// Checkout function
-function checkout() {
+ function checkout() {
     if (typeof Swal !== 'undefined') {
         Swal.fire({
             icon: 'success',
@@ -440,6 +432,5 @@ function checkout() {
     }
 }
 
-// Initialize global instances
-window.productManager = new ProductManager();
+ window.productManager = new ProductManager();
 window.cartManager = new CartManager();
