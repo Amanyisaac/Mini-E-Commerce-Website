@@ -2,7 +2,7 @@
 
 A comprehensive mini e-commerce website built with modern web technologies for the NTI Web Development Course Final Project.
 
-![Adora Logo](imges/ADORA%20LOGO-preview.png)
+![Adora Logo](imges/adora%20logo%20white.png)
 
 ## 🌟 Features
 
