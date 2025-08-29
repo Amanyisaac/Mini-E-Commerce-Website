@@ -12,7 +12,7 @@
 </head>
 <body>
     <section id="header">
-        <a href="#"><img src="../imges/ADORA LOGO-preview.png" class="logo" alt="logo"></a>
+        <a href="#"><img src="../imges/adora logo white.png" class="logo" alt="logo"></a>
         <div>
             <ul id="navbar">
                 <li><a href="../index.html">Home</a></li>
@@ -29,15 +29,18 @@
         </div>
     </section>
 
-     <section class="bg-primary text-white py-5">
-        <div class="container">
+     <section class="py-5" style="background: var(--hero-bg); color: var(--hero-text); position: relative; overflow: hidden;">
+        <!-- Decorative elements -->
+        <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--accent-light); border-radius: 50%; opacity: 0.6;"></div>
+        <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: var(--primary-subtle); border-radius: 50%; opacity: 0.8;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">About Adora</h1>
-                    <p class="lead mb-4">Your premier destination for fashion and style in Egypt</p>
+                    <h1 class="display-4 fw-bold mb-4" style="color: var(--hero-accent);">About Adora</h1>
+                    <p class="lead mb-4" style="color: var(--text-secondary);">Your premier destination for fashion and style in Egypt</p>
                     <div class="d-flex gap-3">
-                        <a href="shop.html" class="btn btn-light btn-lg">Shop Now</a>
-                        <a href="#team" class="btn btn-outline-light btn-lg">Meet Our Team</a>
+                        <a href="shop.html" class="btn btn-lg about-btn-primary">Shop Now</a>
+                        <a href="#team" class="btn btn-lg about-btn-secondary">Meet Our Team</a>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
@@ -72,7 +75,7 @@
                 <div class="col-md-4 text-center">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <div class="text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background-color: var(--primary);">
                                 <i class="fas fa-heart fa-2x"></i>
                             </div>
                             <h4>Quality</h4>
@@ -83,7 +86,7 @@
                 <div class="col-md-4 text-center">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <div class="text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background-color: var(--success);">
                                 <i class="fas fa-users fa-2x"></i>
                             </div>
                             <h4>Community</h4>
@@ -94,7 +97,7 @@
                 <div class="col-md-4 text-center">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <div class="text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background-color: var(--accent);">
                                 <i class="fas fa-lightbulb fa-2x"></i>
                             </div>
                             <h4>Innovation</h4>
