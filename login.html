@@ -121,8 +121,7 @@
          class Auth {
             constructor() {
                 this.users = [
-                    { email: 'admin@adora.com', password: 'admin123', role: 'admin' },
-                    { email: 'user@adora.com', password: 'user123', role: 'user' }
+                    { email: 'admin@adora.com', password: 'admin123'},
                 ];
             }
 
@@ -131,7 +130,6 @@
                 if (user) {
                     sessionStorage.setItem('isLoggedIn', 'true');
                     sessionStorage.setItem('userEmail', user.email);
-                    sessionStorage.setItem('userRole', user.role);
                     return { success: true, user };
                 }
                 return { success: false, message: 'Invalid email or password' };
@@ -140,7 +138,6 @@
             logout() {
                 sessionStorage.removeItem('isLoggedIn');
                 sessionStorage.removeItem('userEmail');
-                sessionStorage.removeItem('userRole');
             }
 
             isAuthenticated() {
