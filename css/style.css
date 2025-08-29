@@ -573,7 +573,7 @@ footer {
     font-size: 20px;
 }
 #page-header{
-    background-image: url( "D:/Mini-E-Commerce-Website/imges/background.shop.png");
+    background-image: url( "../imges/background.shop.png");
     width: 100%;
     height: 80vh;
     background-size: cover;
