@@ -331,25 +331,58 @@ body {
 #sm-banner {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 20px;
 }
 
 #sm-banner .banner-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    background-image: url("D:/FinalProject.NTI/imges/backbannerjpg.jpg");
-    min-width: 780px;
+    align-items: center;
+    flex: 1;
     height: 50vh;
     background-size: cover;
     background-position: center;
     padding: 30px;
+    position: relative;
+    border-radius: 8px;
 }
 
-#sm-banner .banner-box2 {
-    background-image: url("D:/FinalProject.NTI/imges/BACFORSA2.png");
+#sm-banner .banner-promo {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../imges/b7.jpg");
 }
+
+#sm-banner .banner-season {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../imges/smiley-woman-moving-her-body-full-shot.jpg");
+}
+
+#sm-banner .banner-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+#sm-banner .banner-content h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+#sm-banner .banner-content .whihte {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+#sm-banner .banner-content .whihte:hover {
+    background-color: #088178;
+    color: white;
+    border: 1px solid #088178;
+}
+
+
 
 #sm-banner {
     color: red;
@@ -378,25 +411,41 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     min-width: 30%;
     height: 200px;
     background-size: cover;
     background-position: center;
     padding: 20px;
     margin-bottom: 20px;
+    position: relative;
 }
 
-#banner3 .banner-box:nth-child(1) {
-    background-image: url("D:/FinalProject.NTI/imges/b17.jpg ");
+#banner3 .banner-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-align: center;
 }
 
-#banner3 .banner-box:nth-child(2) {
-    background-image: url( "D:/FinalProject.NTI/imges/backgroung.png");
+#banner3 .banner-content h2,
+#banner3 .banner-content h3 {
+    color: white;
+    font-weight: bold;
+    margin: 0;
 }
 
-#banner3 .banner-box:nth-child(3) {
-    background-image: url(" D:/FinalProject.NTI/imges/backgroundd.png ");
+#banner3 .banner-sale {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../imges/pexels-kowalievska-1148960.jpg");
+}
+
+#banner3 .banner-winter {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../imges/caj suit.jpg");
+}
+
+#banner3 .banner-tshirts {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../imges/backgroung banner2.jpg");
 }
 
 #banner h2 {
@@ -807,12 +856,3 @@ margin-bottom: 10px;
         padding: 0 20px;
     }
 }
-
-
-
-
-
-
-
-
- 
