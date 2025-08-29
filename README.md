@@ -10,7 +10,6 @@ A comprehensive mini e-commerce website built with modern web technologies for t
 - **Secure Login**: Email and password validation
 - **Hardcoded Credentials** for demo:
   - Admin: `admin@adora.com` / `admin123`
-  - User: `user@adora.com` / `user123`
 - **Session Management**: Protected routes and user state persistence
 - **Auto-redirect**: Unauthorized users redirected to login page
 
@@ -57,9 +56,9 @@ A comprehensive mini e-commerce website built with modern web technologies for t
 
 ```
 FinalProject.NTI/
+├── index.html              # Homepage with slider
+├── login.html              # Authentication page
 ├── html/
-│   ├── index.html          # Homepage with slider
-│   ├── login.html          # Authentication page
 │   ├── shop.html           # Products listing
 │   ├── add-product.html    # Add new products
 │   ├── about.html          # About page
@@ -82,8 +81,6 @@ FinalProject.NTI/
  
 ### Demo Credentials
 - **Admin**: `admin@adora.com` / `admin123`
-- **User**: `user@adora.com` / `user123`
-
 ## 🎮 Usage Guide
 
 1. **Login**: Start at the login page with demo credentials
