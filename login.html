@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2C5F5D 0%, #4A8B89 100%);
         }
         .login-card {
             background: white;
@@ -39,17 +39,17 @@
             background: transparent;
         }
         .form-control:focus {
-            border-bottom-color: #667eea;
+            border-bottom-color: #F4A261;
             box-shadow: none;
         }
         .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #F4A261 0%, #E76F51 100%);
             border: none;
             padding: 1rem 2rem;
             border-radius: 50px;
             color: white;
             font-weight: 600;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
         .btn-login:hover {
             transform: translateY(-2px);
@@ -178,7 +178,7 @@
                     icon: 'error',
                     title: 'Validation Error',
                     text: 'Please fill in all required fields',
-                    confirmButtonColor: '#667eea'
+                    confirmButtonColor: '#F4A261'
                 });
                 return;
             }
@@ -190,7 +190,7 @@
                     icon: 'success',
                     title: 'Login Successful!',
                     text: `Welcome back, ${result.user.email}`,
-                    confirmButtonColor: '#667eea',
+                    confirmButtonColor: '#F4A261',
                     timer: 2000,
                     showConfirmButton: false
                 }).then(() => {
@@ -201,7 +201,7 @@
                     icon: 'error',
                     title: 'Login Failed',
                     text: result.message,
-                    confirmButtonColor: '#667eea'
+                    confirmButtonColor: '#F4A261'
                 });
             }
         });
