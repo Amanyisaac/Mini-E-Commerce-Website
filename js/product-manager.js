@@ -145,8 +145,8 @@
                 <a href="#" class="add-to-cart" data-product-id="${product.id}">
                     <i class="fa-solid fa-cart-plus cart"></i>
                 </a>
-                <button class="btn btn-sm btn-danger remove-product" data-product-id="${product.id}" 
-                        style="position: absolute; top: 10px; right: 10px; border-radius: 50%; width: 30px; height: 30px; padding: 0; z-index: 10;">
+                <button class="btn product-delete-btn remove-product" data-product-id="${product.id}" 
+                        title="Delete Product" aria-label="Delete ${product.name}">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
@@ -169,35 +169,65 @@
          document.querySelectorAll('.remove-product').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.stopPropagation();
+                e.preventDefault();
                 const productId = e.currentTarget.getAttribute('data-product-id');
+                const productName = this.getProductById(parseInt(productId))?.name || 'this product';
                 
                 if (typeof Swal !== 'undefined') {
                     Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
+                        title: 'Delete Product?',
+                        text: `Are you sure you want to delete "${productName}"? This action cannot be undone.`,
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#3085d6',
-                        confirmButtonText: 'Yes, delete it!'
+                        confirmButtonColor: '#EF4444',
+                        cancelButtonColor: '#2C5F5D',
+                        confirmButtonText: '<i class="fas fa-trash me-2"></i>Yes, delete it!',
+                        cancelButtonText: '<i class="fas fa-times me-2"></i>Cancel',
+                        background: '#ffffff',
+                        color: '#1A1A1A',
+                        customClass: {
+                            popup: 'delete-popup',
+                            title: 'delete-title',
+                            content: 'delete-content'
+                        },
+                        buttonsStyling: true,
+                        reverseButtons: true
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            this.removeProduct(productId);
-                            this.renderProducts('pro-container');
-                            Swal.fire({
-                                title: 'Deleted!',
-                                text: 'Product has been deleted.',
-                                icon: 'success',
-                                timer: 2000,
-                                showConfirmButton: false
-                            });
+                            // Add loading state
+                            button.classList.add('deleting');
+                            button.innerHTML = '<i class="fas fa-spinner"></i>';
+                            
+                            // Simulate async operation
+                            setTimeout(() => {
+                                this.removeProduct(productId);
+                                this.renderProducts('pro-container');
+                                
+                                Swal.fire({
+                                    title: 'Deleted!',
+                                    text: `"${productName}" has been successfully deleted.`,
+                                    icon: 'success',
+                                    timer: 2000,
+                                    showConfirmButton: false,
+                                    confirmButtonColor: '#10B981',
+                                    background: '#ffffff',
+                                    color: '#1A1A1A',
+                                    toast: true,
+                                    position: 'top-end'
+                                });
+                            }, 500);
                         }
                     });
                 } else {
-                    if (confirm('Are you sure you want to delete this product?')) {
-                        this.removeProduct(productId);
-                        this.renderProducts('pro-container');
-                        alert('Product deleted successfully!');
+                    if (confirm(`Are you sure you want to delete "${productName}"?`)) {
+                        button.classList.add('deleting');
+                        button.innerHTML = '<i class="fas fa-spinner"></i>';
+                        
+                        setTimeout(() => {
+                            this.removeProduct(productId);
+                            this.renderProducts('pro-container');
+                            alert(`"${productName}" deleted successfully!`);
+                        }, 500);
                     }
                 }
             });
@@ -250,7 +280,10 @@
                 timer: 2000,
                 showConfirmButton: false,
                 toast: true,
-                position: 'top-end'
+                position: 'top-end',
+                background: '#ffffff',
+                color: '#1A1A1A',
+                iconColor: '#10B981'
             });
         } else {
             alert(`${product.name} added to cart!`);
@@ -293,9 +326,16 @@
                 text: "This will remove all items from your cart",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, clear it!'
+                confirmButtonColor: '#EF4444',
+                cancelButtonColor: '#2C5F5D',
+                confirmButtonText: 'Yes, clear it!',
+                background: '#ffffff',
+                color: '#1A1A1A',
+                customClass: {
+                    popup: 'cart-clear-popup',
+                    title: 'cart-clear-title',
+                    content: 'cart-clear-content'
+                }
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.cart = [];
@@ -307,7 +347,10 @@
                         text: 'Your cart has been cleared.',
                         icon: 'success',
                         timer: 2000,
-                        showConfirmButton: false
+                        showConfirmButton: false,
+                        confirmButtonColor: '#10B981',
+                        background: '#ffffff',
+                        color: '#1A1A1A'
                     });
                 }
             });
@@ -348,11 +391,11 @@
 
         if (this.cart.length === 0) {
             container.innerHTML = `
-                <div class="text-center py-5">
-                    <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                <div class="cart-empty-state">
+                    <i class="fas fa-shopping-cart fa-3x"></i>
                     <h3>Your cart is empty</h3>
-                    <p class="text-muted">Add some products to get started!</p>
-                    <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+                    <p>Add some products to get started!</p>
+                    <a href="shop.html" class="btn cart-continue-btn">Continue Shopping</a>
                 </div>
             `;
             return;
@@ -361,25 +404,25 @@
         container.innerHTML = `
             <div class="cart-items">
                 ${this.cart.map(item => `
-                    <div class="cart-item card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-2">
-                                <img src="${item.image}" class="img-fluid rounded-start" alt="${item.name}" style="height: 100px; object-fit: cover;">
+                    <div class="cart-item card">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-3 col-sm-4">
+                                <img src="${item.image}" class="cart-image" alt="${item.name}">
                             </div>
-                            <div class="col-md-10">
-                                <div class="card-body">
-                                    <h5 class="card-title">${item.name}</h5>
-                                    <p class="card-text">$${item.price}</p>
-                                    <div class="d-flex align-items-center">
-                                        <button class="btn btn-outline-secondary btn-sm" onclick="cartManager.updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                                        <span class="mx-3">${item.quantity}</span>
-                                        <button class="btn btn-outline-secondary btn-sm" onclick="cartManager.updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
-                                        <button class="btn btn-danger btn-sm ms-auto" onclick="cartManager.removeFromCart(${item.id})">
+                            <div class="col-md-9 col-sm-8">
+                                <div class="cart-content">
+                                    <h5>${item.name}</h5>
+                                    <div class="price">$${item.price}</div>
+                                    <div class="quantity-controls">
+                                        <button class="btn cart-quantity-btn" onclick="cartManager.updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                                        <div class="quantity-display">${item.quantity}</div>
+                                        <button class="btn cart-quantity-btn" onclick="cartManager.updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                                        <button class="btn cart-delete-btn ms-auto" onclick="cartManager.removeFromCart(${item.id})">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
-                                    <div class="mt-2">
-                                        <strong>Subtotal: $${(item.price * item.quantity).toFixed(2)}</strong>
+                                    <div class="subtotal">
+                                        Subtotal: $${(item.price * item.quantity).toFixed(2)}
                                     </div>
                                 </div>
                             </div>
@@ -390,17 +433,21 @@
             <div class="cart-summary card mt-4">
                 <div class="card-body">
                     <h4>Cart Summary</h4>
-                    <div class="d-flex justify-content-between">
+                    <div class="summary-row">
                         <span>Total Items:</span>
                         <span>${this.getTotalItems()}</span>
                     </div>
-                    <div class="d-flex justify-content-between">
+                    <div class="summary-row">
                         <strong>Total Price:</strong>
                         <strong>$${this.getTotalPrice().toFixed(2)}</strong>
                     </div>
                     <div class="mt-3">
-                        <button class="btn btn-success w-100 mb-2" onclick="checkout()">Proceed to Checkout</button>
-                        <button class="btn btn-outline-danger w-100" onclick="cartManager.clearCart()">Clear Cart</button>
+                        <button class="btn cart-checkout-btn w-100 mb-3" onclick="checkout()">
+                            <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
+                        </button>
+                        <button class="btn cart-clear-btn w-100" onclick="cartManager.clearCart()">
+                            <i class="fas fa-trash-alt me-2"></i>Clear Cart
+                        </button>
                     </div>
                 </div>
             </div>
@@ -414,7 +461,15 @@
             icon: 'success',
             title: 'Order Placed!',
             text: 'Thank you for your purchase. Your order has been processed.',
-            confirmButtonText: 'Continue Shopping'
+            confirmButtonText: 'Continue Shopping',
+            confirmButtonColor: '#10B981',
+            background: '#ffffff',
+            color: '#1A1A1A',
+            customClass: {
+                popup: 'checkout-popup',
+                title: 'checkout-title',
+                content: 'checkout-content'
+            }
         }).then(() => {
             window.cartManager.cart = [];
             window.cartManager.saveCart();
