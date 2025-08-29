@@ -1,4 +1,4 @@
- const bar = document.getElementById('bar');
+const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
 
@@ -17,8 +17,7 @@ if (close) {
  class Auth {
     constructor() {
         this.users = [
-            { email: 'admin@adora.com', password: 'admin123', role: 'admin' },
-            { email: 'user@adora.com', password: 'user123', role: 'user' }
+            { email: 'admin@adora.com', password: 'admin123'},
         ];
     }
 
@@ -27,7 +26,6 @@ if (close) {
         if (user) {
             sessionStorage.setItem('isLoggedIn', 'true');
             sessionStorage.setItem('userEmail', user.email);
-            sessionStorage.setItem('userRole', user.role);
             return { success: true, user };
         }
         return { success: false, message: 'Invalid email or password' };
@@ -36,10 +34,16 @@ if (close) {
     logout() {
         sessionStorage.removeItem('isLoggedIn');
         sessionStorage.removeItem('userEmail');
-        sessionStorage.removeItem('userRole');
         sessionStorage.removeItem('products');
         sessionStorage.removeItem('cart');
-        window.location.href = 'login.html';
+        
+        // Check if we're in a subdirectory and redirect accordingly
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/html/')) {
+            window.location.href = '../login.html';
+        } else {
+            window.location.href = './login.html';
+        }
     }
 
     isAuthenticated() {
@@ -50,7 +54,6 @@ if (close) {
         if (this.isAuthenticated()) {
             return {
                 email: sessionStorage.getItem('userEmail'),
-                role: sessionStorage.getItem('userRole')
             };
         }
         return null;
@@ -63,7 +66,12 @@ if (close) {
     const currentPage = window.location.pathname;
     
     if (!auth.isAuthenticated() && !currentPage.includes('login.html')) {
-        window.location.href = 'login.html';
+        // Check if we're in a subdirectory and redirect accordingly
+        if (currentPage.includes('/html/')) {
+            window.location.href = '../login.html';
+        } else {
+            window.location.href = './login.html';
+        }
         return false;
     }
     return true;
@@ -124,9 +132,3 @@ function updateNavbar() {
         }
     }
 }
-
-
-
-
-
-
